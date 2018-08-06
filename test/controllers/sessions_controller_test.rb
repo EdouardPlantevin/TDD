@@ -6,6 +6,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
 
+
   test "should get new" do
     get login_path
     assert_response :success
@@ -18,7 +19,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert is_logged_in?
     assert_redirected_to @user
     follow_redirect!
-    assert_select "h1", "#{@user.name}"
+    assert_select "h1", "Nom: #{@user.name}"
   end
 #vérification du lien logout de la nav bar
   test "should have link to logout" do
@@ -50,6 +51,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       assert is_logged_in?
       assert_redirected_to @user
       follow_redirect!
-      assert_select "h1", "Nom: #{@user.name} Email: #{@user.email}"
+      assert_select "p", "Email: #{@user.email}"
     end
 end
