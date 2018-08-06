@@ -10,4 +10,8 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def club
+    @users = User.all
+  end
 end
